@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+int main (int argc, char *argv[])
+{
+    float x1, y1, x2, y2, x3, y3, r, ang, area_tri, area_cir, area_rest;
+
+    printf("Ingrese las coordenadas x e y del primer punto: ");
+    scanf("%f %f", &x1, &y1);
+    printf("Ingrese las coordenadas x e y del segundo punto: ");
+    scanf("%f %f", &x2, &y2);
+    printf("Ingrese las coordenadas x e y del tercer punto: ");
+    scanf("%f %f", &x3, &y3);
+    
+    float a = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+    float b = sqrt(pow(x3 - x2, 2) + pow(y3 - y2, 2));
+    float c = sqrt(pow(x3 - x1, 2) + pow(y3 - y1, 2));
+
+    r = (b*c)/(a + b + c);
+    ang = acos((pow(a, 2) + pow(b, 2) - pow(c, 2)) / (2 * a * b));
+    area_tri = (b*c)/2;
+    area_cir = 3.14 * pow(r, 2);
+    area_rest = area_tri - area_cir;
+
+    printf("El área del triángulo es: %.2f\n", area_tri);
+    printf("El área del círculo es: %.2f\n", area_cir);
+    printf("El área restante es: %.2f\n", area_rest);
+
+    return 0;
+}
